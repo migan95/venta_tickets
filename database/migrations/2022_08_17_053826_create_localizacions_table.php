@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cliente_eventos', function (Blueprint $table) {
+        Schema::create('localizacions', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+
+            $table->unsignedBigInteger('localizacion_tipo_id');
+            $table->foreign('localizacion_tipo_id')->references('id')->on('localizacion_tipos')->onDelete('cascade');
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cliente_eventos');
+        Schema::dropIfExists('localizacions');
     }
 };

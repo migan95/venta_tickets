@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('users',UserController::class);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-
+Route::resource('users',UserController::class);
+Route::resource('eventos',EventoController::class);
 
 require __DIR__.'/auth.php';

@@ -18,6 +18,9 @@ return new class extends Migration
             $table->text("nombre");
             $table->integer("edad_maxima");
             $table->integer("edad_minima");
+
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

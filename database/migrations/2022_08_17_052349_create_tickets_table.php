@@ -19,12 +19,15 @@ return new class extends Migration
             $table->float("precio");
             $table->text("posicion");
             $table->text("codigo");
-            
+/*            
             $table->unsignedBigInteger('ticket_status_id');
             $table->foreign('ticket_status_id')->references('id')->on('ticket_status')->onDelete('cascade');
             
             $table->unsignedBigInteger('evento_id');
             $table->foreign('evento_id')->references('id')->on('eventos')->onDelete('cascade');
+*/
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

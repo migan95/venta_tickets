@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ClasificacionController;
+use App\Http\Controllers\TicketStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,6 @@ Route::get('/dashboard', function () {
 Route::resource('users',UserController::class);
 Route::resource('eventos',EventoController::class);
 Route::resource('clasificacions',ClasificacionController::class);
+Route::resource('ticketstatuses',TicketStatusController::class);
 
 require __DIR__.'/auth.php';

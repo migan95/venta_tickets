@@ -17,11 +17,9 @@ use App\Http\Controllers\TicketStatusController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', function () {
+# Ruta para llegar directamente a la página de login.
+Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 

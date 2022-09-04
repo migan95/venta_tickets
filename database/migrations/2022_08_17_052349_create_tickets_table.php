@@ -21,11 +21,7 @@ return new class extends Migration
             $table->float("precio");
             $table->text("posicion");
             $table->text("codigo");
-
-            $table->unsignedBigInteger('ticket_status_id');
             $table->foreignIdFor(TicketStatus::class)->constrained()->onDelete('cascade');
-
-            $table->unsignedBigInteger('evento_id');
             $table->foreignIdFor(Evento::class)->constrained()->onDelete('cascade');
         });
     }

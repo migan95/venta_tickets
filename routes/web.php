@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ClasificacionController;
 use App\Http\Controllers\TicketStatusController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\ClienteStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +29,7 @@ Route::resource('users',UserController::class);
 Route::resource('eventos',EventoController::class);
 Route::resource('clasificacions',ClasificacionController::class);
 Route::resource('ticketstatuses',TicketStatusController::class);
+Route::resource('tickets',TicketController::class);
+Route::resource('clientestatuses',ClienteStatusController::class);
 
 require __DIR__.'/auth.php';

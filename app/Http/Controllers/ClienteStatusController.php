@@ -54,9 +54,11 @@ class ClienteStatusController extends Controller
      * @param  \App\Models\ClienteStatus  $clienteStatus
      * @return \Illuminate\Http\Response
      */
-    public function show(ClienteStatus $clienteStatus)
+    public function show($id)
     {
-        //
+        return view('clientestatuses.perfil', [
+            'clientestatus' => ClienteStatus::findOrFail($id)
+        ]);
     }
 
     /**
@@ -67,7 +69,8 @@ class ClienteStatusController extends Controller
      */
     public function edit(ClienteStatus $clienteStatus)
     {
-        //
+        return view('clientestatuses.edit')
+            ->with('clientestatus',$clienteStatus);
     }
 
     /**
@@ -79,7 +82,14 @@ class ClienteStatusController extends Controller
      */
     public function update(Request $request, ClienteStatus $clienteStatus)
     {
-        //
+        $request-> validate([
+            'nombre' => 'required'
+        ]);
+
+        $clienteStatus->update($request->all());
+
+        return redirect('clientestatuses')
+            ->with('mensaje', 'Cliente Status actualizado correctamente');
     }
 
     /**
@@ -88,8 +98,11 @@ class ClienteStatusController extends Controller
      * @param  \App\Models\ClienteStatus  $clienteStatus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ClienteStatus $clienteStatus)
+    public function destroy($id)
     {
-        //
+        $clienteStatus = ClienteStatus::findOrFail($id);
+        $clienteStatus->delete();
+
+        return redirect('clientestatuses')->with('mensaje','Cliente Status eliminado existosamente');
     }
 }

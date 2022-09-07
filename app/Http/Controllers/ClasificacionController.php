@@ -49,7 +49,7 @@ class ClasificacionController extends Controller
             'edad_maxima' => $request->edad_maxima
         ]);
 
-        return redirect('clasificacions')->with('mensaje','Evento creado existosamente');
+        return redirect('clasificacions')->with('mensaje','Clasificacion creada existosamente');
     }
 
     /**
@@ -58,9 +58,11 @@ class ClasificacionController extends Controller
      * @param  \App\Models\Clasificacion  $clasificacion
      * @return \Illuminate\Http\Response
      */
-    public function show(Clasificacion $clasificacion)
+    public function show($id)
     {
-        //
+        return view('clasificacions.perfil', [
+            'clasificacion' => Clasificacion::findOrFail($id)
+        ]);
     }
 
     /**
@@ -71,7 +73,8 @@ class ClasificacionController extends Controller
      */
     public function edit(Clasificacion $clasificacion)
     {
-        //
+        return view('clasificacions.edit')
+            ->with('clasificacion',$clasificacion);
     }
 
     /**
@@ -83,7 +86,16 @@ class ClasificacionController extends Controller
      */
     public function update(Request $request, Clasificacion $clasificacion)
     {
-        //
+        $request-> validate([
+            'nombre' => 'required',
+            'edad_minima' => 'required',
+            'edad_maxima' => 'required'
+        ]);
+
+        $clasificacion->update($request->all());
+
+        return redirect('clasificacions')
+            ->with('mensaje', 'Clasificacion actualizada correctamente');
     }
 
     /**
@@ -92,8 +104,11 @@ class ClasificacionController extends Controller
      * @param  \App\Models\Clasificacion  $clasificacion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Clasificacion $clasificacion)
+    public function destroy($id)
     {
-        //
+        $clasificacion = Clasificacion::findOrFail($id);
+        $clasificacion->delete();
+
+        return redirect('clasificacions')->with('mensaje','Clasificacion eliminada existosamente');
     }
 }

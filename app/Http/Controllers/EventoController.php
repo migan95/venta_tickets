@@ -61,7 +61,9 @@ class EventoController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('eventos.perfil', [
+            'evento' => Evento::findOrFail($id)
+        ]);
     }
 
     /**
@@ -70,9 +72,10 @@ class EventoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Evento $evento)
     {
-        //
+        return view('eventos.edit')
+            ->with('evento',$evento);
     }
 
     /**
@@ -82,9 +85,18 @@ class EventoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Evento $evento)
     {
-        //
+        $request ->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'precio' => 'required'
+        ]);
+
+        $evento->update($request->all());
+
+        return redirect('eventos')
+            ->with('mensaje', 'Evento actualizado correctamente');
     }
 
     /**
@@ -95,6 +107,9 @@ class EventoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $evento = Evento::findOrFail($id);
+        $evento->delete();
+
+        return redirect('eventos')->with('mensaje','Evento eliminado existosamente');
     }
 }

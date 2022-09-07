@@ -54,9 +54,11 @@ class TicketStatusController extends Controller
      * @param  \App\Models\TicketStatus  $ticketStatus
      * @return \Illuminate\Http\Response
      */
-    public function show(TicketStatus $ticketStatus)
+    public function show($id)
     {
-        //
+        return view('ticketstatuses.perfil', [
+            'ticketstatus' => TicketStatus::findOrFail($id)
+        ]);
     }
 
     /**
@@ -67,7 +69,8 @@ class TicketStatusController extends Controller
      */
     public function edit(TicketStatus $ticketStatus)
     {
-        //
+        return view('ticketstatuses.edit')
+            ->with('ticketstatus',$ticketStatus);
     }
 
     /**
@@ -79,7 +82,16 @@ class TicketStatusController extends Controller
      */
     public function update(Request $request, TicketStatus $ticketStatus)
     {
-        //
+        $request-> validate([
+            'nombre' => 'required',
+            'edad_minima' => 'required',
+            'edad_maxima' => 'required'
+        ]);
+
+        $ticketStatus->update($request->all());
+
+        return redirect('ticketstatuses')
+            ->with('mensaje', 'Ticket status actualizado correctamente');
     }
 
     /**
@@ -88,8 +100,11 @@ class TicketStatusController extends Controller
      * @param  \App\Models\TicketStatus  $ticketStatus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TicketStatus $ticketStatus)
+    public function destroy($id)
     {
-        //
+        $ticketStatus = TicketStatus::findOrFail($id);
+        $ticketStatus->delete();
+
+        return redirect('ticketstatuses')->with('mensaje','Ticket status eliminado existosamente');
     }
 }

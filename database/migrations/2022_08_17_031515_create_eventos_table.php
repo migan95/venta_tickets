@@ -19,7 +19,6 @@ return new class extends Migration
             $table->float("costo");
             $table->string("descripcion");
             $table->string("nombre");
-
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
         });

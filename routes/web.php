@@ -7,6 +7,7 @@ use App\Http\Controllers\ClasificacionController;
 use App\Http\Controllers\TicketStatusController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ClienteStatusController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,12 @@ use App\Http\Controllers\ClienteStatusController;
 # Ruta para llegar directamente a la página de login.
 Route::get('/', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard'); # El nombre rápido de está ruta se llama dashboard. Por lo tanto solo permite ver el dashboard si se setá autenticado.
 
+#Si cualquier solicitud es echa al endpoint logout, terminar la sesión del usuario.
+Route::match(['get', 'post'], '/logout', [LoginController::class, 'logout'])->name('logout');
+
+#Rutas hacia las APIS de cada Modelo
 Route::resource('users',UserController::class);
 Route::resource('eventos',EventoController::class);
 Route::resource('clasificacions',ClasificacionController::class);

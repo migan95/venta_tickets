@@ -69,7 +69,8 @@ class ClienteTiposController extends Controller
      */
     public function edit(ClienteTipo $clienteTipo)
     {
-        //
+        return view('clientetipos.edit')
+            ->with('clientetipo',$clienteTipo);
     }
 
     /**
@@ -81,7 +82,14 @@ class ClienteTiposController extends Controller
      */
     public function update(Request $request, ClienteTipo $clienteTipo)
     {
-        //
+        $request-> validate([
+            'nombre' => 'required'
+        ]);
+
+        $clienteTipo->update($request->all());
+
+        return redirect('clientetipos')
+            ->with('mensaje', 'Cliente tipo actualizado correctamente');
     }
 
     /**
@@ -90,8 +98,11 @@ class ClienteTiposController extends Controller
      * @param  \App\Models\ClienteTipo  $clienteTipo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ClienteTipo $clienteTipo)
+    public function destroy($id)
     {
-        //
+        $clienteTipo = ClienteTipo::findOrFail($id);
+        $clienteTipo->delete();
+
+        return redirect('clientetipos')->with('mensaje','Cliente tipo eliminado existosamente');
     }
 }

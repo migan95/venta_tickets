@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('cliente_tipos', function (Blueprint $table) {
             $table->id();
             $table->text("nombre");
+
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

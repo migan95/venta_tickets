@@ -60,9 +60,11 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function show(Ticket $ticket)
+    public function show($id)
     {
-        //
+        return view('tickets.perfil', [
+            'ticket' => Ticket::findOrFail($id)
+        ]);
     }
 
     /**
@@ -73,7 +75,8 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
-        //
+        return view('tickets.edit')
+            ->with('ticket',$ticket);
     }
 
     /**
@@ -85,7 +88,17 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-        //
+        $request ->validate([
+            'precio' => 'required',
+            'costo' => 'required',
+            'posicion' => 'required',
+            'codigo' => 'required'
+        ]);
+
+        $ticket->update($request->all());
+
+        return redirect('tickets')
+            ->with('mensaje', 'Ticket actualizado correctamente');
     }
 
     /**
@@ -94,8 +107,11 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ticket $ticket)
+    public function destroy($id)
     {
-        //
+        $ticket = Ticket::findOrFail($id);
+        $ticket->delete();
+
+        return redirect('tickets')->with('mensaje','Ticket eliminado existosamente');
     }
 }

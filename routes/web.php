@@ -40,5 +40,6 @@ Route::resource('tickets',TicketController::class);
 Route::resource('clientestatuses',ClienteStatusController::class);
 Route::resource('clientetipos',ClienteTiposController::class);
 Route::resource('posiciones',PosicionController::class);
+Route::resource('ticketposiciones',PosicionController::class);
 
 require __DIR__.'/auth.php';

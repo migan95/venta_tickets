@@ -69,7 +69,8 @@ class TicketPosicionController extends Controller
      */
     public function edit(TicketPosicion $ticketPosicion)
     {
-        //
+        return view('ticketposiciones.edit')
+            ->with('ticketposicion',$ticketPosicion);
     }
 
     /**
@@ -81,7 +82,14 @@ class TicketPosicionController extends Controller
      */
     public function update(Request $request, TicketPosicion $ticketPosicion)
     {
-        //
+        $request ->validate([
+            'posicion' => 'required'
+        ]);
+
+        $ticketPosicion->update($request->all());
+
+        return redirect('ticketposiciones')
+            ->with('mensaje', 'Ticket posicion actualizada correctamente');
     }
 
     /**
@@ -90,8 +98,11 @@ class TicketPosicionController extends Controller
      * @param  \App\Models\TicketPosicion  $ticketPosicion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TicketPosicion $ticketPosicion)
+    public function destroy($id)
     {
-        //
+        $ticketPosicion = TicketPosicion::findOrFail($id);
+        $ticketPosicion->delete();
+
+        return redirect('ticketposiciones')->with('mensaje','Ticket posicion eliminada existosamente');
     }
 }

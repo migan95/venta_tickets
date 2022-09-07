@@ -9,6 +9,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ClienteStatusController;
 use App\Http\Controllers\ClienteTiposController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PosicionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +39,6 @@ Route::resource('ticketstatuses',TicketStatusController::class);
 Route::resource('tickets',TicketController::class);
 Route::resource('clientestatuses',ClienteStatusController::class);
 Route::resource('clientetipos',ClienteTiposController::class);
+Route::resource('posiciones',PosicionController::class);
 
 require __DIR__.'/auth.php';

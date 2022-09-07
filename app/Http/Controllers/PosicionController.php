@@ -69,7 +69,8 @@ class PosicionController extends Controller
      */
     public function edit(Posicion $posicion)
     {
-        //
+        return view('posiciones.edit')
+            ->with('posicion',$posicion);
     }
 
     /**
@@ -81,7 +82,14 @@ class PosicionController extends Controller
      */
     public function update(Request $request, Posicion $posicion)
     {
-        //
+        $request ->validate([
+            'posiciones' => 'required'
+        ]);
+
+        $posicion->update($request->all());
+
+        return redirect('posiciones')
+            ->with('mensaje', 'Posicion actualizada correctamente');
     }
 
     /**
@@ -90,8 +98,11 @@ class PosicionController extends Controller
      * @param  \App\Models\Posicion  $posicion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Posicion $posicion)
+    public function destroy($id)
     {
-        //
+        $posicion = Posicion::findOrFail($id);
+        $posicion->delete();
+
+        return redirect('posiciones')->with('mensaje','Posicion eliminada existosamente');
     }
 }

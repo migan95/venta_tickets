@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use \App\Models\TicketStatus;
-use \App\Models\Evento;
+use App\Models\TicketStatus;
+use App\Models\Evento;
 
 return new class extends Migration
 {

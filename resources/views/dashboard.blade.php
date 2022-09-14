@@ -1,19 +1,14 @@
 @extends('layouts.admin')
 
-@section('header')
-    header
-@endsection
-
 @section('titulo')
     Dashboard
 @endsection
 
 @section('contenido')
-Contenido
+    <div class="container">
+    </div>
 @endsection
 
 @section('footer')
-footer
+    @parent
 @endsection
-
-

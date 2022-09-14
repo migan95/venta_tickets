@@ -13,7 +13,7 @@
         <label for="edad_maxima">Edad Maxima</label>
         <input id="edad_maxima" type="text" name="edad_maxima" placeholder="edad_maxima" value="{{ $clasificacion->edad_maxima }}" class="form-control">
     </div>
-    
+
     <button type="submit" value="Crear" class="btn btn-primary">Editar <i class="fas fa-user-plus"></i>
     </button>
 </form>

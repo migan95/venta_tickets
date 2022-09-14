@@ -16,7 +16,7 @@
         <label for="costo">Costo</label>
         <input id="costo" type="text" name="costo" placeholder="Costo" class="form-control">
     </div>
-    
+
     <button type="submit" value="Crear" class="btn btn-primary">Crear <i class="fas fa-user-plus"></i>
     </button>
 </form>

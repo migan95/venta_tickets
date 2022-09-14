@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cliente_tipos', function (Blueprint $table) {
+        Schema::create('ubicaciones', function (Blueprint $table) {
             $table->id();
-            $table->text("nombre");
-
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+            $table->string('nombre');
+            $table->string('direccion');
+            $table->string('coordenadas');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cliente_tipos');
+        Schema::dropIfExists('ubicaciones');
     }
 };

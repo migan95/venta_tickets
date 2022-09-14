@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\TicketStatus;
 use App\Models\Evento;
+use App\Models\User;
 
 return new class extends Migration
 {
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->text("codigo");
             $table->foreignIdFor(TicketStatus::class)->constrained()->onDelete('cascade');
             $table->foreignIdFor(Evento::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
         });
     }
 

@@ -21,9 +21,10 @@ return new class extends Migration
             $table->float("costo");
             $table->string("descripcion");
             $table->string("nombre");
+            $table->unsignedBigInteger('ubicaciones_x_evento_id');
+            $table->foreign('ubicaciones_x_evento_id')->references('id')->on('ubicaciones_x_evento')->onDelete('cascade');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
-
             $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
         });
     }

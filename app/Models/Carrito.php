@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ticket extends Model
+class Carrito extends Model
 {
     use HasFactory;
 
@@ -15,11 +15,8 @@ class Ticket extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'precio',
-        'costo',
-        'posicion',
-        'codigo',
-        'user_id'
+        'ticket_id',
+        'user_id',
     ];
 
     /**
@@ -31,13 +28,8 @@ class Ticket extends Model
 
     ];
 
-    public function user()
+    public function ticket()
     {
-        return $this->hasOne('App\Models\User', 'id');
+        return $this->hasOne(Ticket::class, 'id', 'ticket_id');
     }
-
-    /*public function carritos()
-    {
-        return $this->hasMany('App\Models\Carrito', 'ticket_id');
-    }*/
 }

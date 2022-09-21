@@ -43,6 +43,8 @@
     </header>
 @show
 
+@include("carritos.index")
+
 @section('contenido')
     <h1>Contenido a reemplazar</h1>
 @show

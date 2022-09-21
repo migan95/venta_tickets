@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\TicketStatus;
-use App\Models\Evento;
+
+use App\Models\Ticket;
 use App\Models\User;
 
 return new class extends Migration
@@ -16,15 +16,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tickets', function (Blueprint $table) {
+        Schema::create('carritos', function (Blueprint $table) {
             $table->id();
-            $table->float("costo");
-            $table->float("precio");
-            $table->text("posicion");
-            $table->text("codigo");
-            $table->foreignIdFor(TicketStatus::class)->constrained()->onDelete('cascade');
-            $table->foreignIdFor(Evento::class)->constrained()->onDelete('cascade');
-            $table->foreignIdFor(User::class)->nullable()->onDelete('cascade');
+
+            $table->foreignIdFor(Ticket::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
 
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
@@ -38,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tickets');
+        Schema::dropIfExists('carritos');
     }
 };

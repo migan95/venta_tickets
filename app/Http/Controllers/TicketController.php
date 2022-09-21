@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use App\Models\Carrito;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -14,9 +15,15 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::all();
+        $currentUser = \Illuminate\Support\Facades\Auth::user();
+
+        $ticketsComprados = Ticket::where('user_id', $currentUser->id)->get();
+
+        $ticketsDisponibles = Ticket::whereNull('user_id')->get();
+
         return view('tickets.index')
-            ->with('tickets',$tickets);
+            ->with('ticketsDisponibles',$ticketsDisponibles)
+            ->with('ticketsComprados',$ticketsComprados);
     }
 
     /**
@@ -88,17 +95,49 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-        $request ->validate([
-            'precio' => 'required',
-            'costo' => 'required',
-            'posicion' => 'required',
-            'codigo' => 'required'
-        ]);
+        $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+        $out->writeln("update");
 
-        $ticket->update($request->all());
+        if(!empty($request->get("user_id"))){
+            $suficienteSaldo=true;
 
-        return redirect('tickets')
-            ->with('mensaje', 'Ticket actualizado correctamente');
+            if($suficienteSaldo){
+                $out->writeln("suficiente saldo");
+                $ticketOld = Ticket::findOrFail($ticket->id);
+
+                if( empty($ticketOld["user_id"]) ){
+                    $out->writeln("asignar usuario");
+
+                    $ticket->update($request->all());
+
+                    $carrito = Carrito::where('ticket_id', $ticket->id);
+                    $carrito->delete();
+
+                    return redirect('tickets')
+                        ->with('mensaje', 'Ticket comprado exitosamente');
+                }else{
+                    $out->writeln("fue comprado ya el usuario");
+                    return redirect('tickets')
+                        ->with('mensaje', 'Ticket no comprado.  Ticket ya fue comprado.');
+                }
+            }else{
+                $out->writeln("insuficiente saldo");
+                return redirect('tickets')
+                    ->with('mensaje', 'No se pudo comprar ticket.');
+            }
+        }else{
+            $request ->validate([
+                'precio' => 'required',
+                'costo' => 'required',
+                'posicion' => 'required',
+                'codigo' => 'required'
+            ]);
+
+            $ticket->update($request->all());
+
+            return redirect('tickets')
+                ->with('mensaje', 'Ticket actualizado correctamente');
+        }
     }
 
     /**

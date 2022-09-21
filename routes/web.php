@@ -10,18 +10,7 @@ use App\Http\Controllers\ClienteStatusController;
 use App\Http\Controllers\ClienteTiposController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PosicionController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+use App\Http\Controllers\CarritoController;
 
 # Ruta para llegar directamente a la página de login.
 Route::get('/', function () {
@@ -41,5 +30,6 @@ Route::resource('clientestatuses',ClienteStatusController::class);
 Route::resource('clientetipos',ClienteTiposController::class);
 Route::resource('posiciones',PosicionController::class);
 Route::resource('ticketposiciones',PosicionController::class);
+Route::resource('carritos',CarritoController::class);
 
 require __DIR__.'/auth.php';

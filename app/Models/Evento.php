@@ -27,6 +27,11 @@ class Evento extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        
+
     ];
+
+    public function tickets()
+    {
+        return $this->hasMany('App\Models\Ticket', 'evento_id');
+    }
 }

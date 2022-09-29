@@ -5,10 +5,6 @@
 @endsection
 
 @section('contenido')
-    <div class="container">
-    </div>
+<h1>Contenido Pagina</h1>
 @endsection
 
-@section('footer')
-    @parent
-@endsection

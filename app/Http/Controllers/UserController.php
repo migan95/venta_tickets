@@ -65,8 +65,7 @@ class UserController extends Controller
     {
         //
         return view('users.perfil',[
-//            'user' => User::findOrFail($id)
-            'usuario' => $id
+            'usuario' => User::findOrFail($id),
         ]);
     }
 

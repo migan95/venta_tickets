@@ -19,12 +19,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
-            $table->integer('role');
+            $table->integer('role')->nullable();
             $table->string('dpi')->nullable();
             $table->string('nit')->nullable();
             $table->string('telefono')->nullable();
+            $table->rememberToken();
         });
     }
 

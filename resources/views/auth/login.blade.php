@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Login - Brand</title>
+    <title>Login - Sistema Tickets</title>
     <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}">
     <link rel="stylesheet" href="{{asset("css/Nunito.css")}}">
     <link rel="stylesheet" href="{{asset("fonts/fontawesome-all.min.css")}}">
@@ -31,18 +31,18 @@
                                 </div>
                                 <form class="user" method="POST" action="/login">
                                     @csrf
-                                    <div class="mb-3"><input class="form-control form-control-user" type="email" id="email" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"></div>
-                                    <div class="mb-3"><input class="form-control form-control-user" type="password" id="password" placeholder="Password" name="password"></div>
+                                    <div class="mb-3"><input class="form-control form-control-user" type="email" id="email" aria-describedby="emailHelp" placeholder="Correo Electronico" name="email"></div>
+                                    <div class="mb-3"><input class="form-control form-control-user" type="password" id="password" placeholder="Contraseña" name="password"></div>
                                     <div class="mb-3">
                                         <div class="custom-control custom-checkbox small">
-                                            <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
+                                            <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Recordarme</label></div>
                                         </div>
-                                    </div><button class="btn btn-primary d-block btn-user w-100" type="submit">Login</button>
-                                    <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Login with Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Login with Facebook</a>
+                                    </div><button class="btn btn-primary d-block btn-user w-100" type="submit">Iniciar Sesión</button>
+                                    <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Iniciar con Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Iniciar con Facebook</a>
                                     <hr>
                                 </form>
-                                <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a></div>
-                                <div class="text-center"><a class="small" href="register.html">Create an Account!</a></div>
+                                <div class="text-center"><a class="small" href="{{route('password.request')}}">Olvidó contraseña?</a></div>
+                                <div class="text-center"><a class="small" href="{{route('register')}}">Registrate!</a></div>
                             </div>
                         </div>
                     </div>

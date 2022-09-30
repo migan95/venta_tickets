@@ -49,7 +49,7 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
-            'role' => $request->role
+            'role' => 2
         ]);
 
         return redirect('users')->with('mensaje','Usuario creado existosamente');

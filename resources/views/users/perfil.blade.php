@@ -57,5 +57,35 @@
             </div>
         </div>
     </div>
-    <div class="card shadow mb-5"></div>
+    <div class="container">
+        <h1 class="mb-4">Historial Tickets</h1>
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Evento</th>
+                        <th>Tipo de Evento</th>
+                        <th>Ubicacion</th>
+                        <th>Fecha</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Matrix</td>
+                        <td>Pelicula</td>
+                        <td>Cinepolis Miraflores</td>
+                        <td>29/10/2022</td>
+                    </tr>
+                    <tr>
+                        <td>Cata Vinos</td>
+                        <td>Comida</td>
+                        <td>Quesos y Vinos&nbsp;</td>
+                        <td>29/10/2022</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 @endsection

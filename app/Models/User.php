@@ -50,6 +50,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function contadorCarrito(){
+        return Carrito::where('user_id', $this->id)->with('ticket')->get()->count();
+    }
+
     public function eventos(){
         $carritos = Carrito::where('user_id', $this->id)->with('ticket')->get();
 
@@ -64,6 +68,8 @@ class User extends Authenticatable
                 $query->whereIn('id', $ticketIds);
             }])->get();
 
+        $ticketAgregado = false;
+
         foreach($events as $evento){
             if(!empty($evento->tickets)){
 
@@ -72,12 +78,14 @@ class User extends Authenticatable
                     foreach($carritos as $carrito){
                         if($ticketId == $carrito->ticket_id){
                             $ticket["carrito_id"] = $carrito->id;
+
+                            if(!$ticketAgregado) $ticketAgregado = true;
                         }
                     }
                 }
             }
         }
 
-        return $events;
+        return $ticketAgregado ? $events : [];
     }
 }

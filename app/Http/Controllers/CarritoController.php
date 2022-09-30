@@ -15,8 +15,10 @@ class CarritoController extends Controller
      */
     public function index()
     {
-        return view('carritos.index')/*
-        ->with('eventos',$currentUser->events()) */;
+        $currentUser = \Illuminate\Support\Facades\Auth::user();
+
+        return view('carritos.index')
+        ->with('eventos',$currentUser->eventos());
     }
 
     /**

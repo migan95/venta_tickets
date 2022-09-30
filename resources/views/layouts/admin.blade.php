@@ -47,6 +47,11 @@
                                     </form>
                                 </div>
                             </li>
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <div class="nav-item dropdown no-arrow"><a class="nav-link" aria-expanded="false" href="/carritos"><span class="badge bg-danger badge-counter"> {{Auth::user()->contadorCarrito()}} </span><i class="fas fa-shopping-cart fa-fw"></i></a>
+                                </div>
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
+                            </li>
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">{{Auth::user()->name}}</span><img class="border rounded-circle img-profile" src="{{asset('/img/avatars/avatar3.jpeg')}}"></a>

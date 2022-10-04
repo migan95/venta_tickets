@@ -1,5 +1,10 @@
-<html>
-<h1>Mensaje: {{Session::get('mensaje') ?? ' '}}<h1>
+@extends('layouts.admin')
+
+@section('titulo')
+    Tickets
+@endsection
+
+@section('contenido')
 
 <h2>Tickets comprados</h2>
 <hr>
@@ -48,11 +53,10 @@
         <form action="{{ route('carritos.store') }}" method="POST">
             <input type="hidden" id = 'ticket_id' name = 'ticket_id' value="{{ $ticket->id }}">
             @csrf
-            <button type="submit">Agregar a carrito</button>
+            <button style="border:0;background:none;" type="submit"><i class="fas fa-shopping-cart fa-fw" alt="Agregar"></i>Cargar</button>
         </form>
     </td>
 </tr>
 @endforeach
 </table>
-</body>
-</html>
+@endsection

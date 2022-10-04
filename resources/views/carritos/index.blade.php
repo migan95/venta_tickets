@@ -40,7 +40,7 @@
                                 <input type="hidden" id="user_id" type="text" name="user_id" value="{{ 1 }}">
                                 @csrf
                                 @method('PUT')
-                                <button style="border:0;background:none;" alt="Comprar" type="submit"><i class="fa fa-money-bill-wave" alt="Eliminar"></i></button>
+                                <button style="border:0;background:none;" alt="Comprar" type="submit"><i class="fa fa-money-bill-wave" alt="Comprar"></i></button>
                             </form>
 
                             <span> &nbsp; &nbsp; </span>

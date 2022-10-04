@@ -30,7 +30,7 @@
                         <tr>
                             <td>1</td>
                             <td>{{ $ticket->posicion }}</td>
-                            <td>{{ $ticket->precio }}</td>
+                            <td>{{ number_format($ticket->precio, 2, '.', ',') }}</td>
                             @php
                                 $total = $total + $ticket->precio
                             @endphp

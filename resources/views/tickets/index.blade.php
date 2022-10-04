@@ -44,8 +44,8 @@
 @foreach ($ticketsDisponibles as $ticket)
 <tr>
     <td>{{ $ticket->id }}</td>
-    <td>{{ $ticket->costo }}</td>
-    <td>{{ $ticket->precio }}</td>
+    <td>{{ number_format($ticket->costo, 2, '.', ',') }}</td>
+    <td>{{ number_format($ticket->precio, 2, '.', ',') }}</td>
     <td>{{ $ticket->posicion }}</td>
     <td>{{ $ticket->codigo }}</td>
     <td>{{ $ticket->evento_id }}</td>

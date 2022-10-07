@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('dpi')->nullable();
             $table->string('nit')->nullable();
             $table->string('telefono')->nullable();
+            $table->string('imagen')->nullable();
             $table->rememberToken();
         });
     }

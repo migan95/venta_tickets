@@ -1,5 +1,16 @@
-<html>
-<body>
-<h1>{{ $usuario }}</h1>
-</body>
-</html>
+@extends('layouts.admin')
+
+@section('titulo')
+    Detalle Evento
+@endsection
+
+@section('Titulo')
+    Detalle Evento
+@endsection
+
+
+@section('contenido')
+
+    {{$evento}}
+
+@endsection

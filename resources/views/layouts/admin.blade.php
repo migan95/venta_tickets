@@ -1,10 +1,14 @@
+@php()
+
+
+@endphp
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>{{Request::segment(1)}} - Sistema Tickets</title>
+    <title>@yield('titulo')- Sistema Tickets</title>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/Nunito.css')}}">
     <link rel="stylesheet" href="{{asset('fonts/fontawesome-all.min.css')}}">
@@ -22,8 +26,13 @@
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link active" href="{{route('dashboard')}}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/users/{{Auth::id()}}"><i class="fas fa-user"></i>Perfil</a></li>
+                    @if( \Illuminate\Support\Facades\Auth::user()->role == 1)
                     <li class="nav-item"><a class="nav-link" href="{{route('users.index')}}"><i class="fas fa-table"></i><span>CRUD Usuarios</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="forgot-password.html"><i class="fas fa-key"></i><span>Cambiar contraseña</span></a></li>
+                    @endif
+                    @if( \Illuminate\Support\Facades\Auth::user()->role == 3)
+                        <li class="nav-item"><a class="nav-link" href="{{route('eventos.index')}}"><i class="fas fa-table"></i><span>Mis Eventos</span></a></li>
+                    @endif
+                    <li class="nav-item"><a class="nav-link" href="{{route('password.request')}}"><i class="fas fa-key"></i><span>Cambiar contraseña</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('logout')}}"><i class="fas fa-user-circle"></i><span>Logout</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>

@@ -20,7 +20,6 @@ use App\Http\Controllers\LogoutController;
 |
 */
 
-
 Route::group(['middleware'=>'auth'],function (){
     Route::get('/',[EventoController::class,'index'])->name('dashboard');
     Route::resource('users',UserController::class);

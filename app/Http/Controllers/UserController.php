@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -42,7 +44,7 @@ class UserController extends Controller
         $request ->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
         $usuarioCreado = User::create([
@@ -52,7 +54,12 @@ class UserController extends Controller
             'role' => 2
         ]);
 
-        return redirect('users')->with('mensaje','Usuario creado existosamente');
+        if($request->hasFile('imagen')){
+            $this->guardarImagen($usuarioCreado,$request->file('imagen'));
+        }
+
+        return redirect('users')
+            ->with('mensaje','Usuario creado existosamente');
     }
 
     /**
@@ -114,5 +121,22 @@ class UserController extends Controller
         $user->delete();
 
         return redirect('users')->with('mensaje','Usuario eliminado existosamente');
+    }
+
+    public function guardarImagen(User $user,UploadedFile $imagen){
+        $path = 'public/uploads/usuarios';
+        $name = $user->id() . '.' . $imagen->clientExtension();
+        if(Storage::exists($path.'/'.$name)){
+            Storage::delete($path.'/'.$name);
+        }
+        $imagen = Storage::putFileAs(
+            $path,
+            $imagen,
+            $name
+        );
+
+        $user->update([
+            'imagen' => str_replace('public','storage',$imagen)
+        ]);
     }
 }

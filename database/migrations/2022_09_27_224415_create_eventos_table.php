@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo');
+            $table->string('descripcion');
+            $table->string('imagen')->nullable();
+            $table->float('precio_costo',8,2);
             $table->timestamps();
         });
     }

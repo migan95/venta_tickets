@@ -1,7 +1,3 @@
-@php()
-
-
-@endphp
 <!DOCTYPE html>
 <html>
 
@@ -26,6 +22,7 @@
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link active" href="{{route('dashboard')}}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/users/{{Auth::id()}}"><i class="fas fa-user"></i>Perfil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('tickets.index')}}"><i class="fas fa-ticket-alt"></i><span>Tickets</span></a></li>
                     @if( \Illuminate\Support\Facades\Auth::user()->role == 1)
                     <li class="nav-item"><a class="nav-link" href="{{route('users.index')}}"><i class="fas fa-table"></i><span>CRUD Usuarios</span></a></li>
                     @endif

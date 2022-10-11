@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('ubicaciones_x_evento', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('ubicacion-id');
-            $table->foreign('ubicacion-id')->references('id')->on('ubicaciones')->onDelete('cascade');
+            $table->unsignedBigInteger('ubicacion_id');
+            $table->foreign('ubicacion_id')->references('id')->on('ubicaciones')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -15,13 +15,9 @@ return new class extends Migration
     {
         Schema::create('carritos', function (Blueprint $table) {
             $table->id();
-<<<<<<< Updated upstream
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-=======
             $table->unsignedBigInteger('ticket_id');
-            $table->unsignedBigInteger('user_id');
->>>>>>> Stashed changes
             $table->timestamps();
         });
     }

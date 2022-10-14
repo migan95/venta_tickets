@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-<<<<<<< Updated upstream:database/migrations/2022_09_27_224430_create_tickets_table.php
             $table->float('costo');
             $table->float('precio');
             $table->string('codigo');
@@ -24,15 +23,6 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('evento_id')->nullable();
             $table->foreign('evento_id')->references('id')->on('eventos')->onDelete('cascade');
-=======
-            $table->float('precio');
-            $table->float('costo');
-            $table->text('posicion');
-            $table->text('codigo');
-            $table->unsignedBigInteger('ticket_status_id')->nullable();
-            $table->unsignedBigInteger('evento_id');
-            $table->unsignedBigInteger('user_id')->nullable();
->>>>>>> Stashed changes:database/migrations/2022_09_27_224432_create_tickets_table.php
             $table->timestamps();
         });
     }

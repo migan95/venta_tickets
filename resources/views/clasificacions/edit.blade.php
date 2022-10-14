@@ -1,3 +1,12 @@
+@extends('layouts.admin')
+
+@section('titulo')
+    Tickets
+@endsection
+
+@section('contenido')
+
+
 <form action="{{ route('clasificacions.update', $clasificacion->id) }}" method="POST">
     @csrf
     @method('PUT')
@@ -17,3 +26,4 @@
     <button type="submit" value="Crear" class="btn btn-primary">Editar <i class="fas fa-user-plus"></i>
     </button>
 </form>
+@endsection

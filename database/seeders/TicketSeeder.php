@@ -24,7 +24,8 @@ class TicketSeeder extends Seeder
             'codigo' => "A01",
             'posicion' => "1",
             'evento_id' => 100,
-            'user_id' => 100
+            'user_id' => 100,
+            'clasificacion_id' => 100
         ]);
         DB::table('tickets')->insert([
             'id' => 101,
@@ -33,7 +34,8 @@ class TicketSeeder extends Seeder
             'codigo' => "A02",
             'posicion' => "2",
             'evento_id' => 100,
-            'user_id' => 100
+            'user_id' => 100,
+            'clasificacion_id' => 101
         ]);
         DB::table('tickets')->insert([
             'id' => 102,
@@ -42,7 +44,8 @@ class TicketSeeder extends Seeder
             'posicion' => "3",
             'codigo' => "A03",
             'evento_id' => 100,
-            'user_id' => null
+            'user_id' => null,
+            'clasificacion_id' => 102
         ]);
     }
 }

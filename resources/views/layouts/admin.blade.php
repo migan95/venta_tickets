@@ -24,6 +24,7 @@
                     <li class="nav-item"><a class="nav-link" href="/users/{{Auth::id()}}"><i class="fas fa-user"></i>Perfil</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('tickets.index')}}"><i class="fas fa-ticket-alt"></i><span>Tickets</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('clasificacions.index')}}"><i class="fa fa-eye"></i><span>Clasificaciones</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('indexEventosCrud')}}"><i class="fa fa-eye"></i><span>Eventos</span></a></li>
 
 
                     @if( \Illuminate\Support\Facades\Auth::user()->role == 1)

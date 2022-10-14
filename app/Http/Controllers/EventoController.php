@@ -20,6 +20,19 @@ class EventoController extends Controller
             ->with('eventos',$eventos);
     }
 
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return View
+     */
+    public function index_crud()
+    {
+        $eventos = Evento::all();
+        return view('eventos.index_crud')
+            ->with('eventos',$eventos);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -60,13 +73,13 @@ class EventoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+/*    public function show($id)
     {
         return view('eventos.perfil', [
             'evento' => Evento::findOrFail($id)
         ]);
     }
-
+*/
     /**
      * Show the form for editing the specified resource.
      *
@@ -89,14 +102,14 @@ class EventoController extends Controller
     public function update(Request $request, Evento $evento)
     {
         $request ->validate([
-            'nombre' => 'required',
+            'titulo' => 'required',
             'descripcion' => 'required',
             'precio' => 'required'
         ]);
 
         $evento->update($request->all());
 
-        return redirect('eventos')
+        return redirect()->route('indexEventosCrud')
             ->with('mensaje', 'Evento actualizado correctamente');
     }
 

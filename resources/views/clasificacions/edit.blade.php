@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('titulo')
-    Tickets
+    Clasificaciones
 @endsection
 
 @section('contenido')

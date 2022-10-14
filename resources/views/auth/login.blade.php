@@ -26,7 +26,7 @@
                                     @if(session('mensaje'))
                                         <h4 class="text-dark mb-4">{{session('mensaje')}}</h4>
                                     @else
-                                        <h4 class="text-dark mb-4">Bienvenido!</h4>
+                                        <h4 class="text-dark mb-4" dusk="titulo-login">Bienvenido!</h4>
                                     @endif
                                 </div>
                                 <form class="user" method="POST" action="/login">
@@ -37,7 +37,7 @@
                                         <div class="custom-control custom-checkbox small">
                                             <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Recordarme</label></div>
                                         </div>
-                                    </div><button class="btn btn-primary d-block btn-user w-100" type="submit">Iniciar Sesión</button>
+                                    </div><button class="btn btn-primary d-block btn-user w-100" type="submit" dusk="boton-login">Iniciar Sesión</button>
                                     <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Iniciar con Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Iniciar con Facebook</a>
                                     <hr>
                                 </form>

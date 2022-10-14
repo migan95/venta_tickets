@@ -66,7 +66,7 @@ class User extends Authenticatable
 
         $events = Evento::with([ 'tickets' => function($query) use ($ticketIds){
                 $query->whereIn('id', $ticketIds);
-            }])->get();
+        }])->get();
 
         $ticketAgregado = false;
 

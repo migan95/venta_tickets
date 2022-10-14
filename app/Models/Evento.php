@@ -15,10 +15,9 @@ class Evento extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'nombre',
+        'titulo',
         'descripcion',
-        'precio',
-        'costo'
+        'precio'
     ];
 
     /**

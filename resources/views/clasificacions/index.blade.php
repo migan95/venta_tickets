@@ -26,15 +26,22 @@
     <td>{{ $clasificacion->nombre }}</td>
     <td>
 
+    <table>
+    <tr>
+    <td>
     <a href="{{ route('clasificacions.edit',$clasificacion->id) }}"><i class="fas fa-pencil-alt" style="font-size: 30px;" title="Editar"></i></a>
 
+    </td>
+    <td>
 
-
-            <form action="{{ route('clasificacions.destroy',$clasificacion->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button style="border:0;background:none;" type="submit"><i class="far fa-trash-alt" style="font-size: 30px;" title="Borrar"></i></button>
-            </form>
+    <form action="{{ route('clasificacions.destroy',$clasificacion->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button style="border:0;background:none;" type="submit"><i class="far fa-trash-alt" style="font-size: 30px;" title="Borrar"></i></button>
+    </form>
+    </td>
+    </tr>
+    </table>
 
     </td>
 </tr>

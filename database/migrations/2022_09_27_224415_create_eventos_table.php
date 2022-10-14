@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->string('descripcion');
             $table->string('imagen')->nullable();
-            $table->float('precio_costo',8,2);
+            $table->float('precio',8,2);
             $table->timestamps();
         });
     }

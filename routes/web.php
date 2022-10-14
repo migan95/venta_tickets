@@ -22,6 +22,7 @@ use App\Http\Controllers\LogoutController;
 
 Route::group(['middleware'=>'auth'],function (){
     Route::get('/',[EventoController::class,'index'])->name('dashboard');
+    Route::get ('/evento_crud', [EventoController::class,'index_crud'])->name('indexEventosCrud');
     Route::resource('users',UserController::class);
     Route::resource('eventos',EventoController::class);
     Route::resource('clasificacions',ClasificacionController::class);

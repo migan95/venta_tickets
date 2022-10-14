@@ -15,19 +15,19 @@ class ClasificacionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('clasificacions')->insert([
+        DB::table('clasificaciones')->insert([
             'id' => 100,
             'nombre' => 'Todo publico',
             'edad_minima' => 6,
             'edad_maxima'=> 200,
         ]);
-        DB::table('clasificacions')->insert([
+        DB::table('clasificaciones')->insert([
             'id' => 101,
             'nombre' => 'Adolescentes o mayores',
             'edad_minima' => 12,
             'edad_maxima'=> 200,
         ]);
-        DB::table('clasificacions')->insert([
+        DB::table('clasificaciones')->insert([
             'id' => 102,
             'nombre' => 'Adultos',
             'edad_minima' => 18,

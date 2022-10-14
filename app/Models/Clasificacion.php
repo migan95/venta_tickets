@@ -9,6 +9,8 @@ class Clasificacion extends Model
 {
     use HasFactory;
 
+    protected $table = 'clasificaciones';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -26,6 +28,6 @@ class Clasificacion extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        
+
     ];
 }

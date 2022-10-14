@@ -6,6 +6,7 @@ use App\Models\Carrito;
 use App\Models\Evento;
 use Illuminate\Http\Request;
 
+
 class CarritoController extends Controller
 {
     /**
@@ -18,7 +19,8 @@ class CarritoController extends Controller
         $currentUser = \Illuminate\Support\Facades\Auth::user();
 
         return view('carritos.index')
-        ->with('eventos',$currentUser->eventos());
+        ->with('eventos',$currentUser->eventos())
+            ->with('nombres');
     }
 
     /**

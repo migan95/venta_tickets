@@ -24,7 +24,11 @@ class UserSeeder extends Seeder
             'email_verified_at'=> now(),
             'password' => Hash::make('admin'),
             'remember_token' => Str::random(10),
-            'role' => 1
+            'role' => 1,
+            'dpi'=>"1234 56789 1011",
+            'nit' => '1234567-8',
+            'imagen' => '/img/avatars/avatar3.jpeg',
+            'telefono' => '58025942'
         ]);
         DB::table('users')->insert([
             'id' => 101,
@@ -33,7 +37,11 @@ class UserSeeder extends Seeder
             'email_verified_at'=> now(),
             'password' => Hash::make('usuario'),
             'remember_token' => Str::random(10),
-            'role' => 2
+            'role' => 2,
+            'dpi'=>"1234 56789 1011",
+            'nit' => '1234567-8',
+            'imagen' => '/img/avatars/avatar3.jpeg',
+            'telefono' => '58025942'
         ]);
         DB::table('users')->insert([
             'id' => 102,
@@ -42,7 +50,11 @@ class UserSeeder extends Seeder
             'email_verified_at'=> now(),
             'password' => Hash::make('empresa'),
             'remember_token' => Str::random(10),
-            'role' => 3
+            'role' => 3,
+            'dpi'=>"1234 56789 1011",
+            'nit' => '1234567-8',
+            'imagen' => '/img/avatars/avatar3.jpeg',
+            'telefono' => '58025942'
         ]);
     }
 }

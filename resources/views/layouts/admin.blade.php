@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/Nunito.css')}}">
     <link rel="stylesheet" href="{{asset('fonts/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
 </head>
 
 <body id="page-top">
@@ -87,8 +88,14 @@
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
 </div>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
+<script src="{{asset('js/datatables.min.js')}}"></script>
 <script src="{{asset('js/bs-init.js')}}"></script>
 <script src="{{asset('js/theme.js')}}"></script>
+
+@section('footer')
+
+@show
 </body>
 
 </html>

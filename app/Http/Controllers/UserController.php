@@ -85,7 +85,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         return view('users.edit')
-            ->with('user',$user);
+            ->with('usuario',$user);
     }
 
     /**
@@ -100,7 +100,10 @@ class UserController extends Controller
         $request ->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required'
+            'nit' => 'required',
+            'dpi' => 'required',
+            'role' => 'required',
+            'telefono' => 'required'
         ]);
 
         $user->update($request->all());

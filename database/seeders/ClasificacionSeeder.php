@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class ClasificacionSeeder extends Seeder
@@ -14,6 +15,23 @@ class ClasificacionSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('clasificacions')->insert([
+            'id' => 100,
+            'nombre' => 'Todo publico',
+            'edad_minima' => 6,
+            'edad_maxima'=> 200,
+        ]);
+        DB::table('clasificacions')->insert([
+            'id' => 101,
+            'nombre' => 'Adolescentes o mayores',
+            'edad_minima' => 12,
+            'edad_maxima'=> 200,
+        ]);
+        DB::table('clasificacions')->insert([
+            'id' => 102,
+            'nombre' => 'Adultos',
+            'edad_minima' => 18,
+            'edad_maxima'=> 200,
+        ]);
     }
 }

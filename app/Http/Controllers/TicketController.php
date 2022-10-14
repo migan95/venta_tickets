@@ -98,6 +98,10 @@ class TicketController extends Controller
         $out = new \Symfony\Component\Console\Output\ConsoleOutput();
         $out->writeln("update");
 
+        $currentUser = \Illuminate\Support\Facades\Auth::user();
+
+        $request["user_id"] = $currentUser->id;
+
         if(!empty($request->get("user_id"))){
             $suficienteSaldo=true;
 

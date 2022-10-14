@@ -37,7 +37,7 @@
                             <td>
                             <form style='display:inline;' action="{{ route('tickets.update',$ticket->id) }}" method="POST">
                                 <input type="hidden" id="id" type="text" name="id" value="{{ $ticket->id }}">
-                                <input type="hidden" id="user_id" type="text" name="user_id" value="{{ 1 }}">
+
                                 @csrf
                                 @method('PUT')
                                 <button style="border:0;background:none;" alt="Comprar" type="submit"><i class="fa fa-money-bill-wave" alt="Comprar"></i></button>

@@ -24,10 +24,15 @@
                             <div class="p-5">
                                 <div class="text-center">
                                     <h4 class="text-dark mb-2">Olvidó contraseña?</h4>
-                                    <p class="mb-4">Por favor ingrese su correo en la parte inferior para recibir un link de recuperación de contraseña</p>
+                                    @if(session('status'))
+                                        <p class="mb-4" style="color: green">Un link de verificación ha sido enviado al correo electronico proporcionado!</p>
+                                    @else
+                                        <p class="mb-4">Por favor ingrese su correo en la parte inferior para recibir un link de recuperación de contraseña</p>
+                                    @endif
                                 </div>
                                 <form class="user" method="POST" action="{{route('password.email')}}">
-                                    <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Correo Electrónico" name="email"></div><button class="btn btn-primary d-block btn-user w-100" type="submit">Reiniciar contraseña</button>
+                                    @csrf
+                                    <div class="mb-3"><input class="form-control form-control-user" type="email" id="email" aria-describedby="emailHelp" placeholder="Correo Electrónico" name="email"></div><button class="btn btn-primary d-block btn-user w-100" type="submit">Reiniciar contraseña</button>
                                 </form>
                                 <div class="text-center">
                                     <hr><a class="small" href="{{route('register')}}">No tienes cuenta?</a>

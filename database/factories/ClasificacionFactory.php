@@ -17,7 +17,9 @@ class ClasificacionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nombre' => fake()->name(),
+            'edad_minima' => 5,
+            'edad_maxima' => 100
         ];
     }
 }

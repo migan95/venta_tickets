@@ -44,7 +44,12 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Role</strong><br></label><input class="form-control" type="text" id="role" placeholder="Rol" name="role" value="{{$usuario->role}}"></div>
+                                        <label for="rol">Rol</label>
+                                        <select id="rol" name="role" class="form-control">
+                                            <option value="1" {{ $usuario->role == 1 ? 'selected' : '' }}">Administrador</option>
+                                            <option value="2" {{ $usuario->role == 2 ? 'selected' : '' }}">Usuario Normal</option>
+                                            <option value="3" {{ $usuario->role == 3 ? 'selected' : '' }}">Empresa</option>
+                                        </select>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label" for="last_name"><strong>Telefono</strong><br></label><input class="form-control" type="text" id="telefono" placeholder="Telefono" name="telefono" value="{{$usuario->telefono}}"></div>

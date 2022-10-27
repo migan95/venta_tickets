@@ -23,6 +23,7 @@ class EventoSeeder extends Seeder
             'descripcion' => 'Pelicula en Cinepolis Cayala',
             'imagen' => '/img/eventos/matrix.jpg',
             'precio' => 20,
+            'user_id' => 102,
         ]);
         DB::table('eventos')->insert([
             'id' => 101,
@@ -30,6 +31,7 @@ class EventoSeeder extends Seeder
             'descripcion' => 'Concierto en Cayala',
             'imagen' => '/img/eventos/mana.jpg',
             'precio' => 20,
+            'user_id' => 102,
         ]);
         DB::table('eventos')->insert([
             'id' => 102,
@@ -37,6 +39,7 @@ class EventoSeeder extends Seeder
             'descripcion' => 'Disco en zona 1',
             'imagen' => '/img/eventos/disco.jpg',
             'precio' => 20,
+            'user_id' => 102,
         ]);
         DB::table('eventos')->insert([
             'id' => 103,
@@ -44,6 +47,7 @@ class EventoSeeder extends Seeder
             'descripcion' => 'Pelicula en Cinepolis Cayala',
             'imagen' => '/img/eventos/vinos.jpg',
             'precio' => 20,
+            'user_id' => 102,
         ]);
     }
 }

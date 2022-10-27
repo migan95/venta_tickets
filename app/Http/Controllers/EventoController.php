@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Evento;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class EventoController extends Controller
 {
@@ -20,7 +23,6 @@ class EventoController extends Controller
             ->with('eventos',$eventos);
     }
 
-
     /**
      * Display a listing of the resource.
      *
@@ -28,9 +30,16 @@ class EventoController extends Controller
      */
     public function index_crud()
     {
-        $eventos = Evento::all();
-        return view('eventos.index_crud')
-            ->with('eventos',$eventos);
+        if(Auth::user()->role == 1){
+            $eventos = Evento::all();
+            return view('eventos.index_crud')
+                ->with('eventos',$eventos);
+        }elseif(Auth::user()->role == 3){
+            $eventos = Evento::where('user_id',Auth::id())->get();
+            return view('eventos.index_crud')
+                ->with('eventos',$eventos);
+        }
+
     }
 
     /**
@@ -52,17 +61,21 @@ class EventoController extends Controller
     public function store(Request $request)
     {
         $request ->validate([
-            'nombre' => 'required',
+            'titulo' => 'required',
             'descripcion' => 'required',
             'precio' => 'required'
         ]);
 
         $eventoCreado = Evento::create([
-            'nombre' => $request->nombre,
+            'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
             'precio' => $request->precio,
-            'costo' => $request->costo
+            'user_id' => Auth::id(),
         ]);
+
+        if($request->hasFile('imagen')){
+            $this->guardarImagen($eventoCreado,$request->file('imagen'));
+        }
 
         return redirect('eventos')->with('mensaje','Evento creado existosamente');
     }
@@ -125,5 +138,22 @@ class EventoController extends Controller
         $evento->delete();
 
         return redirect('eventos')->with('mensaje','Evento eliminado existosamente');
+    }
+
+    public function guardarImagen(Evento $evento,UploadedFile $imagen){
+        $path = 'public/img/eventos';
+        $name = $evento->id . '.' . $imagen->clientExtension();
+        if(Storage::exists($path.'/'.$name)){
+            Storage::delete($path.'/'.$name);
+        }
+        $imagen = Storage::putFileAs(
+            $path,
+            $imagen,
+            $name
+        );
+
+        $evento->update([
+            'imagen' => str_replace('public','storage',$imagen)
+        ]);
     }
 }

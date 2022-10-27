@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('descripcion');
             $table->string('imagen')->nullable();
             $table->float('precio',8,2);
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

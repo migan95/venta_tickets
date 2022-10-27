@@ -23,16 +23,20 @@
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link active" href="{{route('dashboard')}}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/users/{{Auth::id()}}"><i class="fas fa-user"></i>Perfil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('tickets.index')}}"><i class="fas fa-ticket-alt"></i><span>Tickets</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('clasificacions.index')}}"><i class="fa fa-eye"></i><span>Clasificaciones</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('indexEventosCrud')}}"><i class="fa fa-eye"></i><span>Eventos</span></a></li>
-
-
+                    @if( \Illuminate\Support\Facades\Auth::user()->role == 1)
+                        <li class="nav-item"><a class="nav-link" href="{{route('tickets.index')}}"><i class="fas fa-ticket-alt"></i><span>Todos los tickets</span></a></li>
+                    @endif
+                    @if( \Illuminate\Support\Facades\Auth::user()->role == 1)
+                        <li class="nav-item"><a class="nav-link" href="{{route('clasificacions.index')}}"><i class="fa fa-eye"></i><span>CRUD Clasificaciones</span></a></li>
+                    @endif
+                    @if( \Illuminate\Support\Facades\Auth::user()->role == 1)
+                        <li class="nav-item"><a class="nav-link" href="{{route('indexEventosCrud')}}"><i class="fa fa-eye"></i><span>CRUD Eventos</span></a></li>
+                    @endif
                     @if( \Illuminate\Support\Facades\Auth::user()->role == 1)
                     <li class="nav-item"><a class="nav-link" href="{{route('users.index')}}"><i class="fas fa-table"></i><span>CRUD Usuarios</span></a></li>
                     @endif
                     @if( \Illuminate\Support\Facades\Auth::user()->role == 3)
-                        <li class="nav-item"><a class="nav-link" href="{{route('eventos.index')}}"><i class="fas fa-table"></i><span>Mis Eventos</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('indexEventosCrud')}}"><i class="fas fa-table"></i><span>Mis Eventos</span></a></li>
                     @endif
                     <li class="nav-item"><a class="nav-link" href="{{route('password.request')}}"><i class="fas fa-key"></i><span>Cambiar contraseña</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('logout')}}"><i class="fas fa-user-circle"></i><span>Logout</span></a></li>

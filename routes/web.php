@@ -23,7 +23,7 @@ Route::get('/',[EventoController::class,'index'])->name('dashboard')->middleware
 
 Route::group(['middleware'=>['auth','verified']],function (){
 
-    Route::get ('/evento_crud', [EventoController::class,'index_crud'])->name('indexEventosCrud')->middleware('role:1');
+    Route::get ('/evento_crud', [EventoController::class,'index_crud'])->name('indexEventosCrud');
     Route::resource('users',UserController::class);
     Route::resource('eventos',EventoController::class);
     Route::resource('clasificacions',ClasificacionController::class)->middleware('role:1');

@@ -61,6 +61,7 @@
         <h1 class="mb-4">Historial Tickets</h1>
         <div class="col-md-12">
             <div class="table-responsive">
+                <!---
                 <table class="table">
                     <thead>
                     <tr>
@@ -85,6 +86,7 @@
                     </tr>
                     </tbody>
                 </table>
+                --->
             </div>
         </div>
     </div>

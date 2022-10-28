@@ -38,7 +38,7 @@
                     @if( \Illuminate\Support\Facades\Auth::user()->role == 3)
                         <li class="nav-item"><a class="nav-link" href="{{route('indexEventosCrud')}}"><i class="fas fa-table"></i><span>Mis Eventos</span></a></li>
                     @endif
-                    <li class="nav-item"><a class="nav-link" href="{{route('password.request')}}"><i class="fas fa-key"></i><span>Cambiar contraseña</span></a></li>
+                    <!---<li class="nav-item"><a class="nav-link" href="{{route('password.request')}}"><i class="fas fa-key"></i><span>Cambiar contraseña</span></a></li>--->
                     <li class="nav-item"><a class="nav-link" href="{{route('logout')}}"><i class="fas fa-user-circle"></i><span>Logout</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
